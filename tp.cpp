@@ -7,46 +7,28 @@ void presentaParticipante(string nombre);
 void reglamento();
 
 int main(){
-
-    cout << "Bienvenidos a ¿Quién quiere ser billonario?, el único programa que premia el conocimiento." << endl;
     
-    cout << "Hoy tenemos a 5 participantes nuevos que competiran por el gran premio." << endl;
+    string Categorias[7] = {"Historia", "Deporte", "Arte", "Geografía", "Cultura", "Entretenimiento", "Ciencia"};    
+    
+    string Participantes[5] = {"Participante1", "Participante2", "Participante3", "Participante4", "Participante5"};
 
-    string participante1;
+    string nombreParticipante;
 
-    string participante2;
-
-    string participante3;
-
-    string participante4;
-
-    string participante5;
+    introduccion();
 
     cout << "Participantes, ingresen sus nombres: ";
 
-    cin >> participante1;
+    for(int i = 0; i < 5; i++){
 
-    presentaParticipante(participante1);
+        cin >> nombreParticipante;
 
-    cin >> participante2;
+        Participantes[i] = nombreParticipante;
 
-    presentaParticipante(participante2);
-
-    cin >> participante3;
-
-    presentaParticipante(participante3);
-
-    cin >> participante4;
-
-    presentaParticipante(participante4);
-
-    cin >> participante5;
-
-    presentaParticipante(participante5);
+        presentaParticipante(nombreParticipante);
+    }
 
     reglamento();
 
-    string Categorias[7] = {"Historia", "Deporte", "Arte", "Geografía", "Cultura", "Cine", "Series"};    
 
     return 0;
 }
