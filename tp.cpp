@@ -3,9 +3,7 @@
 using namespace std;
 
 void presentaParticipante(string nombre);
-
 void reglamento();
-
 void introduccion();
 
 int main(){
@@ -30,7 +28,6 @@ int main(){
     }
 
     reglamento();
-
 
     return 0;
 }
