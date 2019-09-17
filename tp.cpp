@@ -16,12 +16,11 @@ struct Participante{
 
 struct NodoLista{
     
+};    
     
 
 
 int main(){
-    
-    //string Categorias[7] = {"Historia", "Deporte", "Arte", "Geografía", "Cultura", "Entretenimiento", "Ciencia"};    
     
     introduccion();
     
