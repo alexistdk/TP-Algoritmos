@@ -2,35 +2,47 @@
 #include <string.h>
 using namespace std;
 
-void presentaParticipante(string nombre);
+void presentaParticipante(char nombre[50]);
 
 void reglamento();
 
 void introduccion();
 
+struct Participante{
+    char nombre[50];
+    int turnos=5;
+    int puntaje=0;
+};
+
+struct NodoLista{
+    
+    
+
+
 int main(){
     
-    string Categorias[7] = {"Historia", "Deporte", "Arte", "Geografía", "Cultura", "Entretenimiento", "Ciencia"};    
+    //string Categorias[7] = {"Historia", "Deporte", "Arte", "Geografía", "Cultura", "Entretenimiento", "Ciencia"};    
     
-    string Participantes[5] = {"Participante1", "Participante2", "Participante3", "Participante4", "Participante5"};
-
-    string nombreParticipante;
-
     introduccion();
+    
+    Participante participantes[5];
+    
+    char nombreParticipante[50];
 
     cout << "Participantes, ingresen sus nombres: ";
 
     for(int i = 0; i < 5; i++){
-
-        cin >> nombreParticipante;
-
-        Participantes[i] = nombreParticipante;
+        
+        cin.getline(nombreParticipante,50);
+        
+        strcpy(paricipantes[i].nombre,nombreParticipante);
 
         presentaParticipante(nombreParticipante);
     }
 
     reglamento();
-
+    
+    
 
     return 0;
 }
@@ -43,7 +55,7 @@ void introduccion(){
 
 }
 
-void presentaParticipante(string nombre){
+void presentaParticipante(char nombre[50]){
 
     cout << "Bienvenido " << nombre << ", le deseamos mucha suerte!" << endl;
     
