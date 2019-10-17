@@ -2,11 +2,10 @@
 #include <string.h>
 using namespace std;
 
-void presentaParticipante(string nombre);
+void presentaParticipante(char nombre[]);
 void reglamento();
 void introduccion();
 void sigCategoria();
-void sigParticipante(string *Ronda[]);
 
 struct Participante{
     char nombre[50];
@@ -65,7 +64,7 @@ void introduccion(){
     cout << "Hoy tenemos a 5 participantes nuevos que competiran por el gran premio." << endl;
 }
 
-void presentaParticipante(string nombre){
+void presentaParticipante(char nombre[]){
     cout << "Bienvenido " << nombre << ", le deseamos mucha suerte!" << endl;
 }
 
