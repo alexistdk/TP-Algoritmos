@@ -15,6 +15,7 @@ struct NodoLista{
 };
 
 int main(){
+    //Falta abrir todos los archivos!
     char partidaNueva;
     cout<<"Desea cargar una partida nueva? (s/n)"<<endl;
     cin>>partidaNueva;
@@ -23,6 +24,7 @@ int main(){
         cin>>partidaNueva;
     }    
     if(partidaNueva=='s'){
+       //Falta el delete de los archivos anteriores
        introduccion();    
        Participante participantes[5];    //Array de Structs para Participantes
        char nombreParticipante[50];
@@ -32,9 +34,9 @@ int main(){
            strcpy(paricipantes[i].nombre,nombreParticipante);
            presentaParticipante(nombreParticipante);
        }
-    reglamento();
+    reglamento();    //Falta el armado del archivo de cada participante!!!
     }
-        
+    while(    
     
 
     return 0;
