@@ -15,17 +15,27 @@ struct NodoLista{
 };
 
 int main(){
-    
-    introduccion();    
-    Participante participantes[5];    //Array de Structs para Participantes
-    char nombreParticipante[50];
-    cout << "Participantes, ingresen sus nombres: ";
-    for(int i = 0; i < 5; i++){
-        cin.getline(nombreParticipante,50);        
-        strcpy(paricipantes[i].nombre,nombreParticipante);
-        presentaParticipante(nombreParticipante);
+    char partidaNueva;
+    cout<<"Desea cargar una partida nueva? (s/n)"<<endl;
+    cin>>partidaNueva;
+    while(partidaNueva!='s'&&partidaNueva!='n'){
+        cout<<"Caracter incorrecto. Ingrese s o n"<<endl;
+        cin>>partidaNueva;
+    }    
+    if(partidaNueva=='s'){
+       introduccion();    
+       Participante participantes[5];    //Array de Structs para Participantes
+       char nombreParticipante[50];
+       cout << "Participantes, ingresen sus nombres: ";
+       for(int i = 0; i < 5; i++){
+           cin.getline(nombreParticipante,50);        
+           strcpy(paricipantes[i].nombre,nombreParticipante);
+           presentaParticipante(nombreParticipante);
+       }
+    reglamento();
     }
-    reglamento();    
+        
+    
 
     return 0;
 }
