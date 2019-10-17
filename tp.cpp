@@ -1,44 +1,49 @@
 #include <iostream>
-#include <string.h>
 using namespace std;
 
 void presentaParticipante(char nombre[]);
 void reglamento();
 void introduccion();
-void sigCategoria();
 
 struct Participante{
     char nombre[50];
     int turnos = 5;
     int puntaje = 0;
 };
+struct Categoria{
+    Preguntas vecDatos[6];
+};
 
-struct NodoCategorias{
-    Historia info;
-    Deportes info;
-    Cultura info;
-    Ciencia info;
-    Geografia info;
-    Entretenimiento info;
-    Random info;
-}
+struct Preguntas{
+    char pregunta[500];
+    char respuesta1[200];
+    char respuesta2[200];
+    char respuesta3[200];
+    char respuesta4[200];
+    char respuestaCorrecta[200];
+    bool usada;
+};
+
+struct Nodo{
+    Categoria info;
+    Nodo* sig;
+};    
 
 int main(){
-
     //Falta abrir todos los archivos!
-
-    fopen catHistoria = ("historia.dat", "rb");
-    fopen catDeportes = ("deportes.dat", "rb");
-    fopen catCultura = ("cultura.dat", "rb");
-    fopen catGeografia = ("geografia.dat", "rb");
-    fopen catEntretenimiento = ("entretenimiento.dat", "rb");
-    fopen catCiencia = ("ciencia.dat", "rb");
-    fopen catRandom = ("random.dat", "rb");
+    Categoria vecCategorias[7];
+    FILE* categorias=fopen("categorias.dat","rb+");
+    FILE* participante1=fopen("participante1.dat","rb+");
+    FILE* participante2=fopen("participante2.dat","rb+");
+    FILE* participante3=fopen("participante3.dat","rb+");
+    FILE* participante4=fopen("participante4.dat","rb+");
+    FILE* participante5=fopen("participante5.dat","rb+");
+    FILE* historico=("historico.dat","rb+");
 
     char partidaNueva;
     cout<<"Desea cargar una partida nueva? (s/n)"<<endl;
     cin>>partidaNueva;
-    while(partidaNueva!='s'&&partidaNueva!='n'){
+    while(partidaNueva!='s'&&partidaNueva!='n'&&partidaNueva!='S'&&partidaNueva!='N'){
         cout<<"Caracter incorrecto. Ingrese s o n"<<endl;
         cin>>partidaNueva;
     }    
@@ -55,7 +60,7 @@ int main(){
        }
     reglamento();    //Falta el armado del archivo de cada participante!!!(open rb+)
     }
-
+    
     return 0;
 }
 
