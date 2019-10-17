@@ -34,9 +34,9 @@ int main(){
            strcpy(paricipantes[i].nombre,nombreParticipante);
            presentaParticipante(nombreParticipante);
        }
-    reglamento();    //Falta el armado del archivo de cada participante!!!
+    reglamento();    //Falta el armado del archivo de cada participante!!!(open rb+)
     }
-    while(    
+    while()    
     
 
     return 0;
