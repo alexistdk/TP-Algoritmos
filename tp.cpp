@@ -14,13 +14,16 @@ struct Categoria{
     Preguntas vecDatos[6];
 };
 
+struct Pregunta{
+};
+
 struct Preguntas{
     char pregunta[500];
     char respuesta1[200];
     char respuesta2[200];
     char respuesta3[200];
     char respuesta4[200];
-    char respuestaCorrecta[200];
+    char respuestaCorrecta;
     bool usada;
 };
 
