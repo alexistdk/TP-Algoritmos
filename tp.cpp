@@ -55,13 +55,14 @@ int main(){
         cin>>partidaNueva;
     }    
     if(partidaNueva=='s'){
-       //remove del archivo 
+       remove("preguntasAux.dat");
+       FILE* preguntasAux=fopen("preguntasAux.dat","rb+");//remove del archivo 
        introduccion();    
        Participante participantes[5];                       //Array de Structs para Participantes
        char nombreParticipante[50];
        cout << "Participantes, ingresen sus nombres: ";
        for(int i = 0; i < 5; i++){
-	   cout<<"Participante ",(i+1)
+	   cout<<"Participante ",(i+1),": "<<endl;
            cin.getline(nombreParticipante,50);    
            strcpy(paricipantes[i].nombre,nombreParticipante);
            presentaParticipante(nombreParticipante);
