@@ -30,10 +30,9 @@ struct Preguntas{                  //La pregunta en si, con las supuestas respue
     bool respCorrecta;
 };
 
-struct NodoCola{			//Falta completar con la info del nodo
-	NodoCola* colaFte;
-	NodoCola* colaFin;
-	
+struct NodoCola{			//Esta bien la info del nodo?
+	NodoCola* sig;
+	Participante info;	
 };
 
 int main(){
@@ -42,7 +41,14 @@ int main(){
     FILE* participantes=fopen("participantes.dat","rb+");
     FILE* historico=("historico.dat","rb+");
     
-    Categoria vecCategorias[7];
+    Categoria vecCategorias[7];    //Vector donde se cargan las preguntas y despues se comparan con el archivo aux 
+    Categoria regCategoria;
+    Participante participantes[5];
+    Participante regParticipante;
+    for(int i=0;i<7;i++){
+	regCategoria=fread(&aux,sizeof(Categoria),1,preguntas);
+	vecCategorias[i]=regCategoria;
+    }
     char partidaNueva;
     cout<<"Desea cargar una partida nueva? (s/n)"<<endl;
     cin>>partidaNueva;
@@ -57,20 +63,30 @@ int main(){
        FILE* participantes=fopen("participante1.dat","rb+");
        FILE* preguntasAux=fopen("preguntasAux.dat","rb+");
        FILE* historico=fopen("historico.dat","rb+");
-       introduccion();    
-       Participante participantes[5];                       //Array de Structs para Participantes
+       introduccion();                     
        char nombreParticipante[50];
        cout << "Participantes, ingresen sus nombres: ";
        for(int i = 0; i < 5; i++){
 	   cout<<"Participante ",(i+1),": "<<endl;
-           cin.getline(nombreParticipante,50);    
-           strcpy(paricipantes[i].nombre,nombreParticipante);
-           presentaParticipante(nombreParticipante);
-	   
+           cin.getline(nombreParticipante,50);
+	   presentaParticipante(nombreParticipante);
+           strcpy(regParticipante.nombre,nombreParticipante);
+           regParticipante.turnos=5;
+	   regParticipante.puntaje=0;
+	   regParticipante.identificador=i+1;
+	   fwrite(&regParticipante,sizeof(Participante),1,participantes);
+	   vecParticipantes[i]=regParticipante;
        }
     reglamento();
-    }                                            //Despues del if hay que armar la Cola para los turnos teniendo en cuenta a los turnos
-    
+    }else{
+	 for(int i=0;i<5;i++){
+		 regParticipante=fread(&regParticipante,sizeof(Participante),1,participantes);
+		 vecParticipantes[i]=regParticipante;
+	 }
+	 while(!feof(preguntasAux)){
+		 fread(&regCategorias,sizeof(Categoria),1,preguntasAux);
+	 }
+    }
     return 0;
 }
 
