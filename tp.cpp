@@ -10,16 +10,16 @@ int numeroAleatorio(int numMax);
 
 struct Participante{
     char nombre[50];
-    int turnos = 5;
-    int puntaje = 0;
+    int turnos;
+    int puntaje;
+    int identificador;	
 };
 struct Categoria{                  //Cada Categoria
     Preguntas vecDatos[6];
-    bool catUsada;
 };
 
 struct Respuesta{                  //Sirve para armar el vector y hacer el multiple choice.
-    char caracter;
+    char opcion;
     char respuesta[200];
 };
 
@@ -27,7 +27,7 @@ struct Preguntas{                  //La pregunta en si, con las supuestas respue
     char pregunta[500];
     Respuesta vecRespuestas[4];
     char respuestaCorrecta;
-    bool pregUsada;
+    bool respCorrecta;
 };
 
 struct NodoCola{			//Falta completar con la info del nodo
@@ -39,11 +39,7 @@ struct NodoCola{			//Falta completar con la info del nodo
 int main(){
     FILE* preguntas=fopen("preguntas.dat","rb");          //Preguntas que solo se leen 
     FILE* preguntasAux=fopen("preguntasAux.dat","rb+");   //Aca se escriben las que se usaron
-    FILE* participante1=fopen("participante1.dat","rb+");
-    FILE* participante2=fopen("participante2.dat","rb+");
-    FILE* participante3=fopen("participante3.dat","rb+");
-    FILE* participante4=fopen("participante4.dat","rb+");
-    FILE* participante5=fopen("participante5.dat","rb+");
+    FILE* participantes=fopen("participantes.dat","rb+");
     FILE* historico=("historico.dat","rb+");
     
     Categoria vecCategorias[7];
@@ -56,7 +52,11 @@ int main(){
     }    
     if(partidaNueva=='s'){
        remove("preguntasAux.dat");
-       FILE* preguntasAux=fopen("preguntasAux.dat","rb+");//remove del archivo 
+       remove("participantes.dat");
+       remove("historico.dat");
+       FILE* participantes=fopen("participante1.dat","rb+");
+       FILE* preguntasAux=fopen("preguntasAux.dat","rb+");
+       FILE* historico=fopen("historico.dat","rb+");
        introduccion();    
        Participante participantes[5];                       //Array de Structs para Participantes
        char nombreParticipante[50];
@@ -66,6 +66,7 @@ int main(){
            cin.getline(nombreParticipante,50);    
            strcpy(paricipantes[i].nombre,nombreParticipante);
            presentaParticipante(nombreParticipante);
+	   
        }
     reglamento();
     }                                            //Despues del if hay que armar la Cola para los turnos teniendo en cuenta a los turnos
