@@ -159,8 +159,10 @@ int 	main(){
 		}
 		posTurno=recuperaParticipanteUltTurno(lista);
 	}
-	while(vecParticipantes[0].turnos!=0&&vecParticipantes[1].turnos!=0&&vecParticipantes[2].puntaje!=0&&
-		  vecParticipantes[3].turnos!=0&&vecParticipantes[4].turnos!=0){
+	getch();
+	system("CLS");
+	while(vecParticipantes[0].turnos+vecParticipantes[1].turnos+vecParticipantes[2].puntaje+
+		  vecParticipantes[3].turnos+vecParticipantes[4].turnos!=0){
 		regPreguntas=hacerPregunta(vecCategorias,vecParticipantes,posTurno,respUsuario);
 		fwrite(&regPreguntas,sizeof(Preguntas),1,preguntasAux);
 		horarioPC(regHistorico.horario);
@@ -256,8 +258,8 @@ int 	main(){
 		}
 	}else{
 		cout<<"El ganador es: "<<vecEmpate[0].nombre<<"-------- puntaje="<<vecEmpate[0].puntaje<<endl;
-		cout<<"GRACIAS POR PARTICIPAR! ;)"<<endl;
 	}
+	cout<<"GRACIAS POR PARTICIPAR! ;)"<<endl;
 	fclose(participantes);
 	fclose(historico);
 	fclose(preguntas);
@@ -389,7 +391,7 @@ bool	resultadoRta(Categoria vecCategorias[], char	respuestaPart, int	numCategori
 
 void	sgtePregunta(Categoria vecCategorias[], int numPregunta, int numCategoria){
 	cout	<<	"Categoria: "	<<	vecCategorias[numCategoria].nombreCategoria;
-	cout	<<	"La pregunta es la siguiente: "	<<	endl;
+	cout	<<	" La pregunta es la siguiente: "	<<	endl;
 	cout	<<	vecCategorias[numCategoria].vecDatos[numPregunta].pregunta	<<	endl;
 	for(int	i=0;	i<4;	i++){
 		cout	<<	vecCategorias[numCategoria].vecDatos[numPregunta].vecRespuestas[i].opcion	<<
